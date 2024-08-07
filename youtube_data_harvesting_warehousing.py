@@ -448,7 +448,7 @@ def main():
     )
 
 
-    api_key = "AIzaSyBLnPOYQSlHuBhuOmg2u_UZd4atlhdjh40"  # Hardcoded API key
+    api_key = "Enter your YouTube API key here"  # Hardcoded API key
 
     # Initialize session state variables if they don't exist
     if 'stored_channels' not in st.session_state:
