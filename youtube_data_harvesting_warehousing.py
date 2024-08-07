@@ -16,7 +16,7 @@ def get_base64_of_bin_file(bin_file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-background_image_path = "C:\Samuel\AI-ML\Code\DS.jpg"
+background_image_path = "Enter your image path"  # Image file path
 base64_image = get_base64_of_bin_file(background_image_path)
 
 st.markdown(
@@ -418,8 +418,8 @@ def reset_channel_id():
 
 def show_success_message(message):
     success_html = f"""
-    <div style="display: flex; align-items: center; background-color: #4CAF50; color: black; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
-        <div style="background-color: white; color: #4CAF50; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+    <div style="display: flex; align-items: center; background-color: white; color: black; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+        <div style="background-color: red; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
             <strong>✓</strong>
         </div>
         <div>
@@ -432,7 +432,7 @@ def show_success_message(message):
     st.markdown(success_html, unsafe_allow_html=True)
     
 def main():
-    st.markdown("<div class='custom-title'><span class='youtube'>YouTube</span> <span class='data-harvesting'>Data Migration</span></div>", unsafe_allow_html=True)
+    st.markdown("<div class='custom-title'><span class='youtube'>YouTube</span> <span class='data-harvesting'>Data Harvesting and Warehousing</span></div>", unsafe_allow_html=True)
     
     st.markdown(
         """
@@ -448,7 +448,7 @@ def main():
     )
 
 
-    api_key = "Enter your YouTube API key here"  # Hardcoded API key
+    api_key = "Enter your API key here"  # Hardcoded API key
 
     # Initialize session state variables if they don't exist
     if 'stored_channels' not in st.session_state:
@@ -523,16 +523,16 @@ def main():
                     st.session_state.data_retrieved = True  
                     
                     # Display the dataframes
-                    st.markdown("<h3 style='color: white;background-color: black;display: inline-block; padding: 5px;'>Channel Data</h3>", unsafe_allow_html=True)
+                    st.markdown("<h3 style='color: white;background-color: grey;display: inline-block; padding: 5px;'>Channel Data</h3>", unsafe_allow_html=True)
                     st.write(channel_df)
     
-                    st.markdown("<h3 style='color: white;background-color: black;display: inline-block; padding: 5px;'>Playlists Data</h3>", unsafe_allow_html=True)
+                    st.markdown("<h3 style='color: white;background-color: grey;display: inline-block; padding: 5px;'>Playlists Data</h3>", unsafe_allow_html=True)
                     st.write(playlists_df)
     
-                    st.markdown("<h3 style='color: white;background-color: black;display: inline-block; padding: 5px;'>Video Data</h3>", unsafe_allow_html=True)
+                    st.markdown("<h3 style='color: white;background-color: grey;display: inline-block; padding: 5px;'>Video Data</h3>", unsafe_allow_html=True)
                     st.write(videos_df)
     
-                    st.markdown("<h3 style='color: white;background-color: black;display: inline-block; padding: 5px;'>Comments Data</h3>", unsafe_allow_html=True)
+                    st.markdown("<h3 style='color: white;background-color: grey;display: inline-block; padding: 5px;'>Comments Data</h3>", unsafe_allow_html=True)
                     st.write(comments_df)
     
                     show_success_message("Data Retrieved and Stored Successfully")
@@ -543,7 +543,7 @@ def main():
         
     # Display the channel selection dropdown only after successful data retrieval
     if st.session_state.data_retrieved:
-        st.markdown("<h3 style='color: white;background-color: black;display: inline-block; padding: 5px;'>Select a channel to migrate data to SQL</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color: white;background-color: grey;display: inline-block; padding: 5px;'>Select a channel to migrate data to SQL</h3>", unsafe_allow_html=True)
         st.session_state.selected_channel = st.selectbox(
             "Select a channel",
             options=[channel['channel_id'] for channel in st.session_state.stored_channels],
@@ -649,7 +649,7 @@ def main():
 
         # Display the query selection dropdown only after successful migration
         if st.session_state.data_migrated:
-            st.markdown("<h3 style='color: white;background-color: black;display: inline-block; padding: 5px;'>Select a query to execute</h3>", unsafe_allow_html=True)
+            st.markdown("<h3 style='color: white;background-color: grey;display: inline-block; padding: 5px;'>Select a query to execute</h3>", unsafe_allow_html=True)
             #st.subheader("Select a query to execute")
             selected_query = st.selectbox(
                 "Select a query",
@@ -670,9 +670,8 @@ def main():
                 result_df['Average_Duration'] = result_df['Average_Duration_Seconds'].apply(seconds_to_hms)
                 result_df = result_df.drop(['Average_Duration_Seconds', 'Sample_Durations'], axis=1)
             
-            st.markdown("<h3 style='color: white;background-color: black;display: inline-block; padding: 5px;'>Final Results</h3>", unsafe_allow_html=True)            
+            st.markdown("<h3 style='color: white;background-color: grey;display: inline-block; padding: 5px;'>Final Results</h3>", unsafe_allow_html=True)            
             
-            #st.subheader("Final Results:")
             st.write(result_df)
 
 if __name__ == "__main__":
