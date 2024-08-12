@@ -49,7 +49,7 @@ pip install -r requirements.txt
 5. Configure the application:
 - Replace Enter your image path in the code with the path to your background image.
 - Replace Enter your API key here with your actual YouTube Data API key.
-- Replace the database connection string in the create_engine_and_session() function with your username and password.
+- Replace the database connection string in the create_engine_and_session() function with your username,password,host and database name.
 
 ## Usage
 
