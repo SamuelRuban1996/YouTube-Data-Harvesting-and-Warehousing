@@ -115,7 +115,7 @@ class Comment(Base):
     video = relationship('Video', back_populates='comments')
 
 def create_engine_and_session():
-    db_connection_string = "mysql+mysqlconnector://root:12345678@localhost/youtube_data"
+    db_connection_string = "mysql+mysqlconnector://username:password@localhost/database_name"  # Replace with your MySQL connection details
     engine = create_engine(db_connection_string)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
